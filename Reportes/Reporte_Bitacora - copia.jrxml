@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte_Bitacora" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="07b2efe9-7c73-4d68-9245-62d954583cfe">
+	<property name="ireport.zoom" value="1.5000000000000029"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="8db92092-ccb4-4beb-a44d-13575cfd76c8"/>
+	<parameter name="fecha_inicio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_final" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     usuario.`nombre` AS usuario_nombre,
+     accion_bitacora.`nombre_accion` AS accion_bitacora_nombre_accion,
+     accion_bitacora.`descripcion` AS accion_bitacora_descripcion,
+     bitacora.`fecha` AS bitacora_fecha
+FROM
+     `accion_bitacora` accion_bitacora INNER JOIN `bitacora` bitacora ON accion_bitacora.`idAccion_bitacora` = bitacora.`id_accion`
+     INNER JOIN `usuario` usuario ON bitacora.`cod_usuario` = usuario.`cod_usuario`
+WHERE ((bitacora.fecha >= "2012-10-10"
+     and bitacora.fecha <="2022-10-10"));]]>
+	</queryString>
+	<field name="usuario_nombre" class="java.lang.Object"/>
+	<field name="accion_bitacora_nombre_accion" class="java.lang.String"/>
+	<field name="accion_bitacora_descripcion" class="java.lang.String"/>
+	<field name="bitacora_fecha" class="java.sql.Date"/>
+	<variable name="usuario_nombre_1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{usuario_nombre}]]></variableExpression>
+	</variable>
+	<filterExpression><![CDATA[$F{usuario_nombre}.toString()]]></filterExpression>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="68" splitType="Stretch">
+			<staticText>
+				<reportElement x="174" y="8" width="235" height="37" uuid="a9265f03-99ef-4f30-8c36-a8bcc3400e76"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="28"/>
+				</textElement>
+				<text><![CDATA[Reporte Bitacora]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="439" y="45" width="130" height="20" uuid="b75a5544-7497-4bef-9e02-653f9e885202"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="57" y="4" width="61" height="55" uuid="667ba91a-4d1a-4a35-99e0-6f4780b2d1c8"/>
+				<imageExpression><![CDATA["C:\\Users\\Javier\\Documents\\NetBeansProjects\\proyecto06-07\\Proyecto\\src\\Imagenes\\1-jpg.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="88" splitType="Stretch">
+			<staticText>
+				<reportElement x="21" y="59" width="99" height="15" uuid="3e025244-e7ac-47af-8e48-4e58923837fb"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de inicio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="22" width="117" height="20" uuid="bef27189-81ac-473e-aa59-787f6b9b4a86"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rango de fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="59" width="67" height="15" uuid="9238df3b-0523-4fcd-9f59-57208975f403"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="187" y="59" width="76" height="15" uuid="35ab5647-ac40-4325-8600-d535ba131107"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha final:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="20" y="73" width="311" height="1" uuid="255073aa-3245-4d8b-9973-e7348bc92a29"/>
+			</line>
+			<textField>
+				<reportElement x="265" y="59" width="66" height="15" uuid="0307d4d6-e54a-4381-8ece-4affd8742779"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_final}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="82" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="572" height="20" uuid="7d668c1d-6b6a-4ca5-a8b8-eea38cd1437d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="1" width="164" height="20" uuid="eee55872-3193-46a9-80f0-4ebf98c9a8fa"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="164" y="1" width="92" height="20" uuid="5134df71-35c5-49ca-bbc9-febe745ef2b1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="256" y="1" width="170" height="20" uuid="cbb1856d-71e1-4260-8c81-3576f184d82a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="15" y="0" width="123" height="21" uuid="d94f3e82-29c8-46b9-84a2-7a2fb0af20be"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre de usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="174" y="0" width="82" height="20" uuid="546864a2-4328-45d8-96b0-6113d32f21e9"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Accion 	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="1" width="94" height="20" uuid="8e3d5a39-b1c3-47cd-95f3-91b6bf5a6a39"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="0" width="130" height="20" uuid="12773609-4258-4911-b79d-6565f8f93f20"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de la activida]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="572" height="20" uuid="01dd0ad8-e046-43d3-b5a3-47c0af473960"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="20" width="164" height="0" uuid="3b5f3e09-162a-4fb2-b726-b7521a41613c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="164" y="0" width="92" height="20" uuid="61a9e426-4906-4465-9208-f6628536413b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="256" y="0" width="170" height="20" uuid="6464f5fc-e74d-4b4d-89ef-64c272a79448"/>
+			</rectangle>
+			<textField>
+				<reportElement x="256" y="0" width="170" height="20" uuid="55c58978-a14f-4f4c-b1ef-528b7bd9dfd4"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{accion_bitacora_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="439" y="0" width="117" height="20" uuid="b7d81f91-b7ea-4420-ba5d-59e31dd4aee6"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bitacora_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="174" y="0" width="82" height="20" uuid="de63d5e0-9951-4ee8-9ed1-c64126c7f30a"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{accion_bitacora_nombre_accion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="3" y="0" width="147" height="20" uuid="fa0a5461-559f-43c0-93da-57b63c4633b8"/>
+				<textFieldExpression><![CDATA[$F{usuario_nombre}.toString()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="26" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="205" y="0" width="80" height="20" uuid="5e3fcc47-5f80-4d08-b920-92a943e718ef"/>
+				<textElement textAlignment="Right">
+					<font fontName="Century Schoolbook"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="285" y="0" width="40" height="20" uuid="14d6a274-895f-4afb-9afa-d681be5ee496"/>
+				<textElement>
+					<font fontName="Century Schoolbook"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="41" splitType="Stretch"/>
+	</summary>
+</jasperReport>
