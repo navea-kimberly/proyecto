@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte_Cobro" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d3ece006-5183-422e-abe1-a3cc104f07ea">
+	<property name="ireport.zoom" value="1.7715610000000144"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha_inicio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_final" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     transaccion.`fecha_trabajo` AS transaccion_fecha_trabajo,
+     cliente.`nombre` AS cliente_nombre,
+     cliente.`dni` AS cliente_dni,
+     transaccion.`monto_t` AS transaccion_monto_t,
+     transaccion.`fecha_cancelada` AS transaccion_fecha_cancelada
+FROM
+     `contrato` contrato INNER JOIN `rol_de_guardia` rol_de_guardia ON contrato.`idContrato` = rol_de_guardia.`id_contrato`
+     INNER JOIN `transaccion` transaccion ON rol_de_guardia.`idRdg` = transaccion.`id_rdg`
+     INNER JOIN `cliente` cliente ON contrato.`dni_cliente` = cliente.`dni` WHERE ((transaccion.id_tipo_transaccion = 1 
+ )and(rol_de_guardia.fecha_rdg >= "$P!{fecha_inicio}"
+     and rol_de_guardia.fecha_rdg <="$P!{fecha_final}" ));]]>
+	</queryString>
+	<field name="transaccion_fecha_trabajo" class="java.sql.Date"/>
+	<field name="cliente_nombre" class="java.lang.String"/>
+	<field name="cliente_dni" class="java.lang.String"/>
+	<field name="transaccion_monto_t" class="java.lang.Double"/>
+	<field name="transaccion_fecha_cancelada" class="java.sql.Date"/>
+	<variable name="transaccion_monto_t_1" class="java.lang.Double" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{transaccion_monto_t}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="120" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="414" y="73" width="131" height="20" uuid="1e6c28c4-ac1c-4ae9-88cd-59c2e1fd16fe"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="157" y="23" width="341" height="37" uuid="c8835b14-c92d-4467-94d0-0a0025eeaa6c"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="28" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Reporte de cobro]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="80" splitType="Stretch">
+			<line>
+				<reportElement x="10" y="63" width="311" height="1" uuid="f0c1f08c-6fa6-4bb0-a030-082593e9a3f9"/>
+			</line>
+			<staticText>
+				<reportElement x="11" y="49" width="99" height="15" uuid="b48acb46-7249-424a-810c-2c5753f5142a"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de inicio:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="255" y="49" width="66" height="15" uuid="32b8f4f9-af61-4a9b-93e3-d86de57afa4f"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_final}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="177" y="49" width="76" height="15" uuid="6e968718-f140-4f5c-aba4-670fe04927fb"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha final:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="49" width="67" height="15" uuid="c262276f-e52d-43a0-9285-e7e06e5238aa"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="12" width="117" height="20" uuid="9d523406-8bc5-4a82-ba38-458428317f62"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rango de fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="49" width="140" height="15" uuid="8af1dd44-28e7-4c2c-93bf-a2da88e76bd2"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto total cobrado:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="358" y="63" width="191" height="1" uuid="9ae3aebd-11a1-4d30-a109-6a521e6b7174"/>
+			</line>
+			<textField evaluationTime="Page">
+				<reportElement x="498" y="49" width="67" height="15" uuid="fc1b6986-a0ce-4cb1-8648-97b7da5ee195"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{transaccion_monto_t_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="293" y="0" width="40" height="20" uuid="07985c5d-72c0-435a-8842-34b4f934ee88"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="16" width="110" height="16" uuid="75bcf4bc-9d96-4478-8b7b-32685450b910"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="110" height="16" uuid="f52ac4fd-b261-4690-8cec-8f8f3cab6838"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="32" backcolor="#CCCCCC" uuid="6240f70a-803a-4c7c-b97a-7e85c604aca6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="219" y="0" width="336" height="16" backcolor="#CCCCCC" uuid="97f2bd8b-26bf-4c0a-8033-0b32ecc8af9c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="436" y="16" width="119" height="16" uuid="46fbd9a0-9c20-414f-92a0-c7fee13e9330"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="219" y="16" width="336" height="16" uuid="8c15f6fd-e407-4883-b7f9-cf17c17236de"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="219" height="16" uuid="2b964bb0-19d0-4a71-b035-5f24d6261946"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="219" y="16" width="127" height="16" uuid="529e674d-0678-41d4-bfb2-aa5981a5a610"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="219" height="32" backcolor="#CCCCCC" uuid="5b9bc105-5063-45bc-8520-54e87d4d8d85"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="52" y="0" width="136" height="15" uuid="375a814b-e52e-4411-b71d-d58ef07674af"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos del cliente]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="16" width="219" height="16" uuid="d78d6cdf-0598-457c-a452-811537e83391"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="16" width="110" height="16" uuid="57924efb-19f6-4a07-808c-ba6776aa8fde"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="346" y="16" width="90" height="16" uuid="e240908c-79e8-4d61-995d-20cebd1d169a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="16" width="100" height="16" uuid="9f098ecf-adeb-406d-8529-6deea61c041f"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="15" width="56" height="17" uuid="a029234c-0551-4966-93c6-eef2c225c3e1"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="15" width="46" height="16" uuid="d88eda68-76f8-4c12-a823-707956fd41fb"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="16" width="100" height="16" uuid="a1c16d2f-4bf7-4b47-a12d-9a1b005c6cba"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha del pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="119" y="16" width="100" height="16" uuid="119ce5a3-34c7-44d0-978c-cdbc6f181098"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cedula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="0" width="136" height="15" uuid="355b9bf1-9b7f-431c-8ec2-7d40f9ae63c4"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos del contrato ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="17" uuid="57c46726-737f-4fdc-91b3-9d98e67a215f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="110" height="17" uuid="2c920b36-db16-4e67-b465-1d2ed847544b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="110" y="0" width="109" height="17" uuid="41e4dccd-bd38-45ef-833b-fe8f9b4f20bd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="219" y="0" width="127" height="17" uuid="7379df3b-7c27-4aa7-bf24-1af8d72c883e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="436" y="0" width="119" height="17" uuid="3d72a754-3ced-44ca-931a-53fe12c7a056"/>
+			</rectangle>
+			<textField>
+				<reportElement x="119" y="0" width="100" height="17" uuid="9f62c004-b88e-4882-8e3d-5325dff5b132"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_dni}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="0" width="100" height="17" uuid="5fcfdddf-06c1-404e-a856-06872328453d"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transaccion_monto_t}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="346" y="0" width="90" height="17" uuid="09d0635e-f279-443f-8505-f862a5139ae8"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transaccion_fecha_trabajo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="0" width="100" height="17" uuid="24183c13-e506-4095-abc1-3e4011478e44"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transaccion_fecha_cancelada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="0" width="106" height="17" uuid="8c7bafe4-a096-4bd9-9c00-84ec63dbad4d"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="204" y="0" width="80" height="20" uuid="28b1d5fe-2b07-4eae-bb0b-7af8ebdd0602"/>
+				<textElement textAlignment="Right">
+					<font fontName="Century Schoolbook"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="284" y="0" width="40" height="20" uuid="812eb5b8-af4d-481b-ae88-ec40a96e9739"/>
+				<textElement>
+					<font fontName="Century Schoolbook"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

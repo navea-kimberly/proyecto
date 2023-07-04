@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #f0f2f5;" stylesheets="@/Otros/Estilo.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.A_modPrincipal_Controlador">
+   <children>
+        <HBox layoutX="0.0" layoutY="0.0" prefHeight="25.0" prefWidth="1100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <children>
+              <Label fx:id="barraSuperior" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="1050.0" />
+              <Label fx:id="lblMinimizarVentana" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" styleClass="lblMinimizarVentana">
+                 <graphic>
+                    <MaterialDesignIconView fill="#3a4558" glyphName="MINUS" size="19" />
+                 </graphic>
+              </Label>
+              <Label fx:id="lblCerrarVentana" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" styleClass="lblCerrarVentana">
+                 <graphic>
+                    <MaterialDesignIconView fill="#3a4558" glyphName="CLOSE" size="21" />
+                 </graphic>
+                 <HBox.margin>
+                    <Insets />
+                 </HBox.margin>
+              </Label>
+           </children>
+        </HBox>
+       
+       <VBox alignment="TOP_CENTER" layoutX="0.0" layoutY="25.0" prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: #3a4558;" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <image>
+                  <Image url="@../Imagenes/sidebar.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" prefWidth="250.0" styleClass="sidebar-user" text="Administrador">
+                <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            
+            <HBox fx:id="btnInicio" alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="HOME" size="20" />
+                  <Label text="Inicio" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            
+            
+            <Label prefWidth="250.0" text="Directorios" textFill="white">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="2.0" top="20.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </Label>
+            <HBox fx:id="btnClientes" alignment="CENTER_LEFT" layoutX="10.0" layoutY="138.0" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Imagenes/cliente.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Clientes" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="btnVigilantes" alignment="CENTER_LEFT" layoutX="10.0" layoutY="173.0" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Imagenes/vigilante.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Vigilantes" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="btnRolesDeGuardia" alignment="CENTER_LEFT" layoutX="10.0" layoutY="138.0" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Imagenes/rol-de-guardia.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Roles de Guardia" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="btnContratos" alignment="CENTER_LEFT" layoutX="10.0" layoutY="173.0" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Imagenes/contrato.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Contratos" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="13.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="btnTransacciones" alignment="CENTER_LEFT" layoutX="10.0" layoutY="208.0" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Imagenes/transaccion.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Transacciones" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            
+            
+            <Label prefWidth="250.0" text="Servicios y Recompensas" textFill="white">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="2.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <HBox fx:id="btnRotacionDelPersonal" alignment="CENTER_LEFT" layoutX="10.0" layoutY="243.0" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" size="20" />
+                  <Label text="Rotación del Personal" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="btnControlDeAusencias" alignment="CENTER_LEFT" layoutX="10.0" layoutY="278.0" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="LIST_ALT" size="20" />
+                  <Label text="Control de Ausencias" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="btnSalario_Beneficios" alignment="CENTER_LEFT" layoutX="10.0" layoutY="313.0" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="MONEY" size="20" />
+                  <Label text="Salario y Beneficios" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            
+            
+            <Label layoutX="10.0" layoutY="406.0" prefWidth="250.0" text="Otros" textFill="white">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="2.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <HBox fx:id="btnUsuarios" alignment="CENTER_LEFT" layoutX="10.0" layoutY="433.0" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USERS" size="20" />
+                  <Label text="Usuarios" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="btnBitacora" alignment="CENTER_LEFT" layoutX="10.0" layoutY="580.0" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="HISTORY" size="20" />
+                  <Label text="Bitacora" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="btnMantenimiento" alignment="CENTER_LEFT" layoutX="10.0" layoutY="433.0" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="BRIEFCASE" glyphStyle="briefcase" size="20" />
+                  <Label text="Mantenimiento" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="btnReporte" alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="250.0" styleClass="sidebar-btn">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PRINT" size="20" />
+                  <Label text="Reportes" textFill="white">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            
+            
+            <Label fx:id="btnCerrarSesion" alignment="CENTER" layoutX="88.0" layoutY="100.0" styleClass="sign-out" text="Cerrar Sesión">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="25.0" top="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="15.0" right="15.0" top="5.0" />
+               </padding>
+            </Label>
+            
+         </children>
+      </VBox>
+      
+                        <AnchorPane fx:id="AnchorPanePrincipal" layoutX="50.0" layoutY="50.0" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0" />
+   </children>
+</AnchorPane>

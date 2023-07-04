@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: white;" stylesheets="@/Otros/Estilo.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.A_Control_de_Ausencias_Controlador">
+   <children>
+       <Label alignment="CENTER" prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #16a9fa;" text="Control de Ausencias" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Century Schoolbook" size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane id="AnchorPane" layoutY="50.0" prefHeight="550.0" prefWidth="750.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <children>
+             <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" style="-fx-border-color: #16a9fa; -fx-border-width: 0 0 0 10; -fx-background-radius: 2px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <children>
+                  <Label text="Identificador del Vigilante:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="7.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtCodigoVigilante" focusColor="#05a4fa" labelFloat="false" prefHeight="30.0" prefWidth="110.0" promptText="V27068109" unFocusColor="BLACK" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXButton fx:id="btnBuscarAusencias" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #05a4fa;" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="5.0">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="14" />
+                     </graphic>
+                  </JFXButton>
+                   
+                   <Label layoutY="56.0" text="Seleccione un mes:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="58.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cmbMes" focusColor="#05a4fa" layoutX="130.0" layoutY="50.0" prefHeight="30.0" prefWidth="160.0" promptText="Julio" unFocusColor="BLACK" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="50.0" />
+                  <JFXButton fx:id="btnSeleccioneMes" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #05a4fa;" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="55.0">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="14" />
+                     </graphic>
+                  </JFXButton>
+                  
+                  <AnchorPane layoutX="350.0" prefHeight="82.0" prefWidth="150.0" style="-fx-background-color: #1a75ff;" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label fx:id="lblTrabajosAsignados" layoutX="14.0" layoutY="11.0" text="0" textFill="#fcfcfc" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="11.0">
+                           <font>
+                              <Font name="Century Schoolbook Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="68.0" layoutY="23.0" text="Trabajos" textFill="#f5f5f5" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="23.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="65.0" layoutY="42.0" text="asignados" textFill="#f5f5f5" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="42.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  
+                  <AnchorPane layoutX="580.0" prefHeight="82.0" prefWidth="150.0" style="-fx-background-color: #e60000;" AnchorPane.leftAnchor="510.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label fx:id="lblAusenciasTotal" layoutX="14.0" layoutY="11.0" text="0" textFill="#fcfcfc" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="11.0">
+                           <font>
+                              <Font name="Century Schoolbook Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="66.0" layoutY="24.0" text="Ausencias" textFill="#f5f5f5" AnchorPane.leftAnchor="66.0" AnchorPane.topAnchor="24.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="74.0" layoutY="42.0" text="en total" textFill="#f5f5f5" AnchorPane.leftAnchor="74.0" AnchorPane.topAnchor="42.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" style="-fx-border-color: #16a9fa; -fx-border-width: 0 0 0 10; -fx-background-radius: 2px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <children>
+                  <TableView fx:id="tblControlAusencias" prefHeight="353.0" prefWidth="560.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="clmNumeroAusencia" prefWidth="40.0" text="#" />
+                        <TableColumn fx:id="clmIDRolGuardia" prefWidth="125.0" text="Rol de Guardia" />
+                        <TableColumn fx:id="clmIDContrato" prefWidth="125.0" text="Contrato" />
+                        <TableColumn fx:id="clmFechaGuardia" prefWidth="132.0" text="Fecha del trabajo" />
+                        <TableColumn fx:id="clmRemuneracion" prefWidth="135.0" text="Remuneración" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </AnchorPane>
+      
+      <AnchorPane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #16a9fa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+   </children>
+</AnchorPane>

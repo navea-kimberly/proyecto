@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: WHITE;" stylesheets="@/Otros/Estilo.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.IniciarSesion_Controlador">
+   <AnchorPane prefHeight="400.0" prefWidth="430.0" style="-fx-background-color: #16a9fa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="37.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="115.0">
+            <image>
+               <Image url="@../Imagenes/1.png" />
+            </image>
+         </ImageView>
+      </children>
+   </AnchorPane>
+   
+   <VBox layoutX="112.0" layoutY="40.0" prefHeight="430.0" prefWidth="400.0" style="-fx-background-color: #3a4558;" styleClass="vbx" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <Label layoutX="32.0" layoutY="30.0" prefHeight="25.0" prefWidth="450.0" text="Código de Usuario" textFill="WHITE">
+            <font>
+               <Font name="Century Gothic" size="15.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="30.0" top="105.0" />
+            </VBox.margin>
+         </Label>
+         <HBox>
+            <VBox.margin>
+               <Insets bottom="30.0" right="190.0" />
+            </VBox.margin>
+            <children>
+               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../Imagenes/cod-usuario.png" />
+                  </image>
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+               </ImageView>
+               <JFXTextField fx:id="txtCodUsuario" focusColor="#c1c9d7" prefHeight="28.0" prefWidth="165.0" styleClass="txtIniciarSesion" unFocusColor="WHITE">
+                  <font>
+                     <Font name="Century Gothic" size="14.0" />
+                  </font>
+               </JFXTextField>
+            </children>
+         </HBox>
+         <Label layoutX="30.0" layoutY="80.0" prefHeight="25.0" prefWidth="450.0" text="Nombre de Usuario" textFill="WHITE">
+            <font>
+               <Font name="Century Gothic" size="15.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="30.0" />
+            </VBox.margin>
+         </Label>
+         <HBox>
+            <VBox.margin>
+               <Insets bottom="30.0" right="190.0" />
+            </VBox.margin>
+            <children>
+               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../Imagenes/nombre-de-usuario.png" />
+                  </image>
+                  <HBox.margin>
+                     <Insets left="5.0" right="5.0" top="10.0" />
+                  </HBox.margin>
+               </ImageView>
+               <JFXTextField fx:id="txtUsername" focusColor="#c1c9d7" prefHeight="25.0" prefWidth="165.0" styleClass="txtIniciarSesion" unFocusColor="WHITE">
+                  <font>
+                     <Font name="Century Gothic" size="14.0" />
+                  </font>
+               </JFXTextField>
+            </children>
+         </HBox>
+         <Label layoutX="30.0" layoutY="226.0" prefHeight="25.0" prefWidth="450.0" text="Contraseña" textFill="WHITE">
+            <font>
+               <Font name="Century Gothic" size="15.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="30.0" />
+            </VBox.margin>
+         </Label>
+         <HBox>
+            <VBox.margin>
+               <Insets bottom="50.0" right="190.0" />
+            </VBox.margin>
+            <children>
+               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../Imagenes/contraseña.png" />
+                  </image>
+                  <HBox.margin>
+                     <Insets left="3.0" right="5.0" top="10.0" />
+                  </HBox.margin>
+               </ImageView>
+               <JFXPasswordField fx:id="txtPassword" focusColor="#c1c9d7" prefHeight="28.0" prefWidth="165.0" styleClass="txtIniciarSesion" unFocusColor="WHITE">
+                  <font>
+                     <Font name="Century Gothic" size="14.0" />
+                  </font>
+               </JFXPasswordField>
+            </children>
+         </HBox>
+         <JFXButton fx:id="btnIniciarSesion" buttonType="RAISED" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #3a4558;" styleClass="btnIniciarSesion" text="Iniciar Sesión" textFill="WHITE">
+            <VBox.margin>
+               <Insets left="15.0" />
+            </VBox.margin>
+            <font>
+               <Font name="Century Gothic" size="14.0" />
+            </font>
+         </JFXButton>
+      </children>
+      <padding>
+         <Insets bottom="20.0" left="30.0" right="20.0" top="20.0" />
+      </padding>
+      <effect>
+         <DropShadow />
+      </effect>
+   </VBox>
+   
+    <HBox layoutX="33.0" layoutY="-25.0" prefHeight="25.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="barraSuperior" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="750.0" />
+            <Label fx:id="lblMinimizarVentana" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" styleClass="lblMinimizarVentana">
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="MINUS" size="19" />
+               </graphic>
+            </Label>
+            <Label fx:id="lblCerrarVentana" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" styleClass="lblCerrarVentana">
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="CLOSE" size="21" />
+               </graphic>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+</AnchorPane>

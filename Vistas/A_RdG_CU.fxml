@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: white;" stylesheets="@/Otros/Estilo.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.A_RdG_CU_Controlador">
+   <children>
+      <Label alignment="CENTER" prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #16a9fa;" text="Sección Roles de Guardia" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Century Schoolbook" size="18.0" />
+         </font>
+      </Label>
+      
+      <ScrollPane hbarPolicy="NEVER" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" vbarPolicy="ALWAYS" vmax="2.0" vvalue="0.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <content>
+            <AnchorPane prefHeight="900.0" prefWidth="750.0" style="-fx-background-color: white;">
+               <children>
+                  <HBox alignment="CENTER_LEFT" style="-fx-border-color: #16a9fa; -fx-border-width: 0 0 0 10; -fx-background-radius: 2px;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label text="Código de Rol de Guardia:">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtCodRdG" focusColor="#05a4fa" labelFloat="false" prefHeight="30.0" prefWidth="90.0" promptText="50001" unFocusColor="BLACK">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <JFXButton fx:id="btnBuscar" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #05a4fa;">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="14" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <AnchorPane layoutX="0.0" layoutY="80.0" prefHeight="450.0" prefWidth="670.0" style="-fx-border-color: #16a9fa; -fx-border-width: 0 0 0 10; -fx-background-radius: 2px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+                     <children>
+                        <Label text="Contrato" AnchorPane.leftAnchor="0.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtCodContrato" focusColor="#05a4fa" labelFloat="false" prefHeight="30.0" prefWidth="90.0" promptText="30001" unFocusColor="BLACK" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <Label text="Fecha del trabajo" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXDatePicker fx:id="dpFechaRdG" defaultColor="#16a9fa" prefHeight="30.0" prefWidth="175.0" promptText="DD/MM/YYYY" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="20.0" />
+                        <Label layoutX="30.0" layoutY="90.0" text="Hora de inicio" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtHoraInicio" focusColor="#05a4fa" labelFloat="false" layoutX="30.0" layoutY="110.0" prefHeight="30.0" prefWidth="90.0" promptText="hh:mm" unFocusColor="BLACK" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="20.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <Label layoutX="30.0" layoutY="250.0" text="Hora de cierre" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtHoraCierre" focusColor="#05a4fa" labelFloat="false" layoutX="30.0" layoutY="270.0" prefHeight="30.0" prefWidth="90.0" promptText="hh:mm" unFocusColor="BLACK" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="20.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <Label text="Vigilante" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtCodVigilante" focusColor="#05a4fa" labelFloat="false" prefHeight="30.0" prefWidth="90.0" promptText="V28019108" unFocusColor="BLACK" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <Label text="Nombre Completo del Vigilante" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="80.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtVigilante" editable="false" focusColor="#05a4fa" labelFloat="false" prefHeight="30.0" prefWidth="240.0" promptText="José Alvarado Alvarado" unFocusColor="BLACK" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="100.0">
+                           <font>
+                              <Font name="Century Schoolbook Italic" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <Label layoutX="30.0" layoutY="90.0" text="Asistencia del vigilante" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="160.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXCheckBox fx:id="chbAsistencia" checkedColor="#16a9fa" layoutX="27.0" layoutY="186.0" prefHeight="30.0" text="Sí" unCheckedColor="#3a4558" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="180.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </JFXCheckBox>
+                        <Label layoutX="30.0" layoutY="90.0" text="Hora de llegada" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="160.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtHoraLlegada" disable="true" focusColor="#05a4fa" labelFloat="false" layoutX="30.0" layoutY="110.0" prefHeight="30.0" prefWidth="90.0" promptText="hh:mm" unFocusColor="BLACK" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="180.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <Label layoutX="30.0" layoutY="250.0" text="Hora de salida" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="160.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtHoraSalida" disable="true" focusColor="#05a4fa" labelFloat="false" layoutX="30.0" layoutY="270.0" prefHeight="30.0" prefWidth="90.0" promptText="hh:mm" unFocusColor="BLACK" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="180.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <Label layoutX="130.0" layoutY="229.0" text="Bono nocturno" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="240.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtBonoNocturno" disable="true" editable="false" layoutX="4.0" layoutY="210.0" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: white; -fx-text-fill: #16a9fa; -fx-border-color: #16a9fa; -fx-border-width: 0px 0px 0px 5px;" text="TBA" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="260.0">
+                           <font>
+                              <Font name="Century Schoolbook Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="140.0" layoutY="250.0" text="Bono domingo" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="240.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtBonoDomingo" disable="true" editable="false" layoutX="4.0" layoutY="210.0" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: white; -fx-text-fill: #16a9fa; -fx-border-color: #16a9fa; -fx-border-width: 0px 0px 0px 5px;" text="TBA" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="260.0">
+                           <font>
+                              <Font name="Century Schoolbook Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="30.0" layoutY="90.0" text="Horas trabajadas" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="240.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtHorasTrabajadas" disable="true" editable="false" focusColor="#05a4fa" labelFloat="false" layoutX="380.0" layoutY="260.0" prefHeight="30.0" prefWidth="30.0" promptText="0" unFocusColor="BLACK" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="260.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <Label layoutX="30.0" layoutY="250.0" text="Horas extra" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="240.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtHorasExtra" disable="true" editable="false" focusColor="#05a4fa" labelFloat="false" layoutX="510.0" layoutY="260.0" prefHeight="30.0" prefWidth="30.0" promptText="0" unFocusColor="BLACK" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="260.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <Label layoutX="410.0" layoutY="250.0" text="Horas de descanso" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="320.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtHorasDescanso" disable="true" editable="false" focusColor="#05a4fa" labelFloat="false" layoutX="380.0" layoutY="340.0" prefHeight="30.0" prefWidth="30.0" promptText="0" unFocusColor="BLACK" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="340.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <Label layoutX="30.0" layoutY="90.0" text="Tipo de incidencia" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="400.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXComboBox fx:id="cbTipoIncidencia" disable="true" focusColor="#05a4fa" layoutY="420.0" prefHeight="30.0" prefWidth="200.0" promptText="Seleccione" unFocusColor="BLACK" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="420.0" />
+                        <Label layoutX="140.0" layoutY="250.0" text="Descripción" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="400.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextArea fx:id="txtDescripcion" disable="true" focusColor="#05a4fa" layoutX="56.0" layoutY="385.0" prefHeight="110.0" promptText="No hay incidente que reportar." unFocusColor="BLACK" wrapText="true" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="420.0">
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                        </JFXTextArea>
+                        <JFXButton fx:id="btnAgregarIncidencia" alignment="CENTER" disable="true" graphicTextGap="6.0" prefWidth="214.0" style="-fx-border-color: white; -fx-background-color: #05a4fa;" text="Agregar incidencia" textFill="WHITE" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="550.0">
+                           <padding>
+                              <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                           </padding>
+                           <font>
+                              <Font name="Century Schoolbook" size="14.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="14" />
+                           </graphic>
+                        </JFXButton>
+                        <TableView fx:id="tablaIncidencia" prefHeight="150.0" prefWidth="660.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="55.0">
+                           <columns>
+                              <TableColumn fx:id="c_tipoIncidencia" prefWidth="210.0" resizable="false" text="Tipo de incidencia" />
+                              <TableColumn fx:id="c_descripcion" prefWidth="350.0" text="Descripción" />
+                              <TableColumn fx:id="c_eliminarIncidencia" prefWidth="40.0" resizable="false" text=" " />
+                           </columns>
+                        </TableView>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </AnchorPane>
+               </children>
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+            </AnchorPane>
+         </content></ScrollPane>
+      
+      <AnchorPane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #16a9fa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton fx:id="btnAgregarRdG" alignment="CENTER" graphicTextGap="6.0" layoutX="177.0" layoutY="10.0" prefWidth="214.0" style="-fx-border-color: white;" text="Agregar Rol de Guardia" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="10.0">
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+               </padding>
+               <font>
+                  <Font name="Century Schoolbook" size="14.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="14" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnModificarRdG" alignment="CENTER" disable="true" graphicTextGap="6.0" layoutX="473.0" layoutY="10.0" prefWidth="214.0" style="-fx-border-color: white;" text="Aplicar cambios" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="10.0">
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+               </padding>
+               <font>
+                  <Font name="Century Schoolbook" size="14.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" size="14" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

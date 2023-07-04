@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte_pagos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1def94c0-9bc6-4054-804b-74552666dbc5">
+	<property name="ireport.zoom" value="1.6105100000000303"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha_inicio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_final" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     transaccion.`monto_t` AS transaccion_monto_t,
+     vigilante.`nombres` AS vigilante_nombres,
+     vigilante.`apellidos` AS vigilante_apellidos,
+     transaccion.`id_rdg` AS transaccion_id_rdg,
+     transaccion.`fecha_cancelada` AS transaccion_fecha_cancelada,
+     rol_de_guardia.`fecha_rdg` AS rol_de_guardia_fecha_rdg
+FROM
+     `vigilante` vigilante INNER JOIN `rol_de_guardia` rol_de_guardia ON vigilante.`dni` = rol_de_guardia.`dni_vigilante`
+     INNER JOIN `transaccion` transaccion ON rol_de_guardia.`idRdg` = transaccion.`id_rdg`
+     INNER JOIN `tipo_transaccion` tipo_transaccion ON transaccion.`id_tipo_transaccion` = tipo_transaccion.`idTipo_transaccion`
+WHERE
+     ((transaccion.id_tipo_transaccion = 2)
+     and (rol_de_guardia.fecha_rdg >= "$P!{fecha_inicio}"
+     and rol_de_guardia.fecha_rdg <= "$P!{fecha_final}"))]]>
+	</queryString>
+	<field name="transaccion_monto_t" class="java.lang.Double"/>
+	<field name="vigilante_nombres" class="java.lang.String"/>
+	<field name="vigilante_apellidos" class="java.lang.String"/>
+	<field name="transaccion_id_rdg" class="java.lang.Integer"/>
+	<field name="transaccion_fecha_cancelada" class="java.sql.Date"/>
+	<field name="rol_de_guardia_fecha_rdg" class="java.sql.Date"/>
+	<variable name="transaccion_monto_t_1" class="java.lang.Double" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{transaccion_monto_t}]]></variableExpression>
+	</variable>
+	<variable name="transaccion_monto_t_2" class="java.lang.Double" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{transaccion_monto_t}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="117" splitType="Stretch">
+			<staticText>
+				<reportElement x="154" y="32" width="341" height="37" uuid="6d7a8eea-5ec4-4925-b5e3-9dbcfb9503c4"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="28"/>
+				</textElement>
+				<text><![CDATA[Reporte de pagos]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="410" y="87" width="136" height="20" uuid="74811088-d2b7-4085-aba1-7c419209e2f1"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="117" height="20" uuid="47832e3f-8ccb-4c2d-99c7-5503131ee539"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rango de fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="47" width="99" height="15" uuid="87264dd9-14b5-4958-9d4d-1db01ab25c6b"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de inicio:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="61" width="311" height="1" uuid="877945e6-c81b-4383-ab12-a1ec3c5ea6ea"/>
+			</line>
+			<staticText>
+				<reportElement x="177" y="47" width="76" height="15" uuid="4a3465ff-f9dc-4871-8d66-5e362442006f"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha final:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="355" y="61" width="191" height="1" uuid="267112da-5d8a-479e-88e7-4f0c7f9de5c5"/>
+			</line>
+			<staticText>
+				<reportElement x="355" y="47" width="140" height="15" uuid="720e3212-b367-44dc-b01f-cd8a0f5f0623"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto total pagado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="255" y="47" width="66" height="15" uuid="56059b0d-0f1e-41ac-a91a-a5e722890329"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_final}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="47" width="67" height="15" uuid="de1baca8-8f17-4612-9568-4359263b3f85"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Page">
+				<reportElement x="495" y="47" width="100" height="15" uuid="70cda61b-7abb-4adc-a6e2-a5750ec15a5b"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{transaccion_monto_t_2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="32" backcolor="#CCCCCC" uuid="8c767f95-0761-4950-ba89-8b2ee00b8473"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="219" y="16" width="336" height="16" uuid="84e35005-4a32-4073-b419-338f5972577e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="436" y="16" width="119" height="16" uuid="8f7cddfa-1126-432f-9d6b-0856d941d4d0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="219" y="16" width="127" height="16" uuid="64ef2f50-9fc4-41d4-9801-7daf637873bb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="219" height="32" backcolor="#CCCCCC" uuid="c2648006-905c-48eb-803d-a57a5262b294"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="16" width="219" height="16" uuid="943cf387-692c-418f-8b1f-d550ca6b6f00"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="16" width="110" height="16" uuid="25b8fe70-9a52-440e-a79f-1e852c20ef9e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="119" y="16" width="69" height="16" uuid="beaba552-568c-4b01-a9e6-5f26dc57045d"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="16" width="100" height="16" uuid="fe362ddf-fa50-4e20-8d87-b0e9e1cb68e6"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="16" width="43" height="16" uuid="890a9196-a698-4425-ac51-17b54e283d0e"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="16" width="100" height="16" uuid="294d91e2-d68d-4ae2-8519-59385ae541db"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rol del guardia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="16" width="100" height="16" uuid="2138f02e-5031-4363-8602-a2ad9579949e"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha del pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="1" width="136" height="15" uuid="6a990468-0e93-4017-ae54-8870896d2c50"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos rol vigilante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="0" width="136" height="15" uuid="e742302c-7b39-4844-be84-4d70841d9a2b"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos del vigilante]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<rectangle>
+				<reportElement x="219" y="0" width="336" height="16" uuid="99792bab-b73b-4912-8c04-ca96b6035e2a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="219" y="0" width="127" height="16" uuid="1ea037cd-ada5-4399-896b-e510b583e358"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="219" height="16" uuid="186e791c-d97d-49c1-a8a4-b4f6bfea9538"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="110" height="16" uuid="56e5533a-06d2-465a-97e9-532db17dc993"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="436" y="0" width="119" height="16" uuid="3b25e10a-e661-4e37-bb93-d5bc44635546"/>
+			</rectangle>
+			<textField>
+				<reportElement x="10" y="0" width="100" height="15" uuid="33817556-18df-4a2c-a087-d67f91ea997f"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vigilante_nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="0" width="69" height="15" uuid="bfc4c349-d31a-4dfe-97cf-159a052c511b"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vigilante_apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="0" width="61" height="15" uuid="133e4585-d1cf-4fbf-9ec3-c6c8197c9e1c"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transaccion_id_rdg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="367" y="0" width="69" height="15" uuid="d737704c-d2c4-41ed-af2e-f0e3f19e9b60"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transaccion_monto_t}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="0" width="100" height="15" uuid="42541d4c-aae2-4413-bc2b-19067706d07f"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transaccion_fecha_cancelada}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="71" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="293" y="0" width="40" height="20" uuid="925e40e8-4018-4807-9169-dbec8a4394af"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="213" y="0" width="80" height="20" uuid="2aa1c7e0-7b13-478d-a5d3-2859b31217b0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Century Schoolbook"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: white;" stylesheets="@/Otros/Estilo.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.A_Vigilante_CU_Controlador">
+   <children>
+      <Label alignment="CENTER" prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #16a9fa;" text="Sección Vigilantes" textAlignment="CENTER" textFill="#fffefe">
+         <font>
+            <Font name="Century Schoolbook" size="18.0" />
+         </font>
+      </Label>
+      
+      <AnchorPane id="AnchorPane" layoutY="50.0" prefHeight="600.0" prefWidth="750.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <children>
+             <HBox alignment="CENTER_LEFT" style="-fx-border-color: #16a9fa; -fx-border-width: 0 0 0 10; -fx-background-radius: 2px;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label text="Documento de Identidad:">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="CedulaCombobox" focusColor="#05a4fa" layoutX="93.0" layoutY="152.0" prefHeight="30.0" prefWidth="65.0" unFocusColor="BLACK">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </JFXComboBox>
+                  <JFXTextField fx:id="txtDni" focusColor="#05a4fa" labelFloat="false" prefHeight="30.0" prefWidth="110.0" promptText="27068109" unFocusColor="BLACK">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </JFXTextField>
+                  <JFXButton fx:id="btnBuscar" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #05a4fa;">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="14" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+             
+            <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" style="-fx-border-color: #16a9fa; -fx-border-width: 0 0 0 10; -fx-background-radius: 2px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+               <children>
+                  <Label text="Nombres" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtNombres" focusColor="#05a4fa" prefHeight="30.0" prefWidth="170.0" promptText="Cristian Alfonso" unFocusColor="BLACK" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label text="Apellidos" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtApellidos" focusColor="#05a4fa" prefHeight="30.0" prefWidth="170.0" promptText="Alvarado Alvarado" unFocusColor="BLACK" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label text="Fecha de nacimiento" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXDatePicker fx:id="dpFechaNacimiento" defaultColor="#16a9fa" prefHeight="30.0" prefWidth="165.0" promptText="DD/MM/YYYY" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0" />
+                  <Label text="Dirección Fiscal" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="160.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXTextArea fx:id="txtDireccion" focusColor="#05a4fa" prefHeight="80.0" prefWidth="270.0" promptText="Carrera 15 con calle 32 Urb. Alejandro Sagal Casa #33" unFocusColor="BLACK" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="180.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </JFXTextArea>
+                  <Label text="Número de contacto" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="300.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="TelefonoCombobox" focusColor="#05a4fa" prefHeight="30.0" prefWidth="85.0" unFocusColor="BLACK" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="320.0" />
+                  <JFXTextField fx:id="txtNContacto" focusColor="#05a4fa" prefHeight="30.0" prefWidth="110.0" promptText="3571590" unFocusColor="BLACK" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="320.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label text="Fecha de ingreso" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="80.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXDatePicker fx:id="dpFechaIngreso" defaultColor="#16a9fa" disable="true" prefHeight="30.0" prefWidth="165.0" promptText="DD/MM/YYYY" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="100.0" />
+                  <JFXCheckBox fx:id="chbJefeGrupo" checkedColor="#16a9fa" text="Jefe de Grupo" unCheckedColor="#16a9fa" AnchorPane.leftAnchor="270.0" AnchorPane.topAnchor="300.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="chbDisponible" checkedColor="#16a9fa" text="Disponible" unCheckedColor="#16a9fa" AnchorPane.leftAnchor="270.0" AnchorPane.topAnchor="330.0">
+                     <font>
+                        <Font name="Century Schoolbook" size="14.0" />
+                     </font>
+                  </JFXCheckBox>
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </AnchorPane>
+            
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </AnchorPane>
+      
+      <AnchorPane layoutY="550.0" prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #16a9fa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton fx:id="btnRegistrarVigilante" alignment="CENTER" graphicTextGap="6.0" layoutX="177.0" layoutY="10.0" prefWidth="214.0" style="-fx-border-color: white;" text="Agregar Vigilante" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="10.0">
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+               </padding>
+               <font>
+                  <Font name="Century Schoolbook" size="14.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="14" />
+               </graphic>
+            </JFXButton>
+            
+            <JFXButton fx:id="btnModificarVigilante" alignment="CENTER" disable="true" graphicTextGap="6.0" layoutX="473.0" layoutY="10.0" prefWidth="214.0" style="-fx-border-color: white;" text="Aplicar cambios" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="10.0">
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+               </padding>
+               <font>
+                  <Font name="Century Schoolbook" size="14.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" size="14" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="btnVolver" fitHeight="20.0" fitWidth="20.0" layoutX="30.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="btnVolver" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="15.0">
+         <image>
+            <Image url="@../Imagenes/volver.png" />
+         </image>
+      </ImageView>
+      
+   </children>
+</AnchorPane>

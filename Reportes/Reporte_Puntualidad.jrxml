@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte_Puntualidad" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="474fce41-b48b-481a-b807-65390011bb24">
+	<property name="ireport.zoom" value="0.9313819845887427"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="fecha_inicio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_final" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Javier\\Documents\\NetBeansProjects\\proyecto06-07\\Proyecto\\src\\Reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     vigilante.`nombres` AS vigilante_nombres,
+     vigilante.`apellidos` AS vigilante_apellidos,
+     rol_de_guardia.`hora_inicio` AS rol_de_guardia_hora_inicio,
+     rol_de_guardia.`hora_llegada` AS rol_de_guardia_hora_llegada,
+     rol_de_guardia.`idRdg` AS rol_de_guardia_idRdg
+FROM
+     `vigilante` vigilante INNER JOIN `rol_de_guardia` rol_de_guardia ON vigilante.`dni` = rol_de_guardia.`dni_vigilante`
+WHERE
+    ((rol_de_guardia.hora_inicio =rol_de_guardia.hora_llegada) and (rol_de_guardia.fecha_rdg >= "$P!{fecha_inicio}"
+     and rol_de_guardia.fecha_rdg <= "$P!{fecha_final}"))]]>
+	</queryString>
+	<field name="vigilante_nombres" class="java.lang.String"/>
+	<field name="vigilante_apellidos" class="java.lang.String"/>
+	<field name="rol_de_guardia_hora_inicio" class="java.lang.String"/>
+	<field name="rol_de_guardia_hora_llegada" class="java.lang.String"/>
+	<field name="rol_de_guardia_idRdg" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="145" splitType="Stretch">
+			<staticText>
+				<reportElement x="114" y="40" width="341" height="37" uuid="03d48ccc-3468-4ee2-bf7d-85efac62615a"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="28" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Reporte de puntualidad]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="424" y="95" width="131" height="20" uuid="9069452b-efa1-4fef-ab61-ba32f7569f75"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="28" y="38" width="132" height="57" uuid="65566ddf-a172-48bb-ae72-987804ed7fdc"/>
+				<imageExpression><![CDATA["C:\\Documents and Settings\\Usuario\\Escritorio\\x\\Proyecto\\src\\Imagenes\\1-jpg.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="66" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="117" y="41" width="63" height="20" uuid="1831c1ef-1e02-42dd-961a-5b930a527b86"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="260" y="41" width="70" height="20" uuid="2d9fcce3-002c-4aaf-a00b-b621c5514c57"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_final}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="18" y="41" width="99" height="20" uuid="8b26f890-8abe-41c6-973c-ebf8fc9c07f3"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de inicio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="9" width="117" height="20" uuid="d733b883-b5fe-4e5c-857f-9dfd60440072"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rango de fecha:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="18" y="60" width="311" height="1" uuid="dd64d54e-586a-44d5-b288-8d8171f1136c"/>
+			</line>
+			<staticText>
+				<reportElement x="184" y="41" width="76" height="20" uuid="824a72a2-0b16-4b59-bbf2-f6e1af5564b6"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha final:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="360" y="60" width="194" height="1" uuid="36276ad6-183d-4a80-ac7c-cf58d7777fa7"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="555" height="41" uuid="b4cdd645-e562-4214-a704-40fb6ef5d02f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="455" y="23" width="100" height="19" uuid="e74389e5-db85-4d8c-b537-2325683a86bb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="248" y="24" width="104" height="18" uuid="98f3c81a-56d6-4607-ab1b-6b26f18ef7f1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="1" width="248" height="23" backcolor="#CCCCCC" uuid="58ec7230-f1df-4d80-9573-fae4b6063fed"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="24" width="248" height="18" uuid="d14b02ef-7962-4315-a6f8-f07897eb9a56"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="24" width="119" height="18" uuid="2a9f0571-6045-4944-b88b-932dcd308476"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="4" y="26" width="115" height="16" backcolor="#FFFFFF" uuid="c26fd039-56f5-42af-8f2a-9eaa1b1d6a78"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="26" width="124" height="15" uuid="943a1671-5e69-42d2-8974-62ca74ef1f55"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="26" width="100" height="15" uuid="650e22b9-6478-42ab-867d-7dab788e7c71"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora de llegada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="26" width="100" height="15" uuid="6014dbf0-888a-4698-91c5-7a951afabf3b"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora de inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="459" y="26" width="75" height="15" uuid="2c9e35f0-aa11-4a9d-8516-e53f0e144312"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="6" width="121" height="20" uuid="38bb2fa1-67a3-4bc6-a8ea-45ef495ccdbc"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos del vigilante]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="248" y="1" width="307" height="23" backcolor="#CCCCCC" uuid="2ed2a99c-b4f3-4ddf-986d-e64b50c81bb0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="316" y="6" width="166" height="20" uuid="dd37a859-6e6f-4d2a-9f39-acc8ed96e83c"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos del Rol de guardia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="19" uuid="4f45f5f2-3805-4722-bec1-80ae68121bd9"/>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement x="352" y="0" width="103" height="19" uuid="6fdbd712-1559-4427-a499-0bdd16000c80"/>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement x="119" y="0" width="129" height="19" uuid="1d092201-009f-406d-8b28-31d936de07d2"/>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement x="0" y="0" width="119" height="19" uuid="31b11746-133d-4b99-b68c-38850c2e7264"/>
+			</rectangle>
+			<textField>
+				<reportElement x="4" y="1" width="112" height="18" uuid="dc1afeb1-22e3-4ac3-b54b-d3abe090bad6"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vigilante_nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="1" width="123" height="18" uuid="821d6d8a-af09-4bbf-ba25-877fae37798c"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vigilante_apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="1" width="99" height="18" uuid="7884d794-3ebc-4cf3-810c-2ee432b22967"/>
+				<textElement>
+					<font fontName="Century Schoolbook" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rol_de_guardia_hora_inicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="252" y="1" width="103" height="18" uuid="e186c5ed-6d47-46d1-bdfe-dae841412c32"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rol_de_guardia_hora_inicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="459" y="1" width="95" height="18" uuid="ae812691-f734-4562-9edb-1dac4442ca92"/>
+				<textFieldExpression><![CDATA[$F{rol_de_guardia_idRdg}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="286" y="0" width="40" height="20" uuid="2dff6408-eb95-4247-8213-ea553bb2779f"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="206" y="0" width="80" height="20" uuid="10021456-28f1-402d-9b1c-74a8dfbc2fa2"/>
+				<textElement textAlignment="Right">
+					<font fontName="Century Schoolbook"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
